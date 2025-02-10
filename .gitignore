@@ -1,0 +1,15 @@
+# Ignore vendor directory
+vendor/
+
+# Ignore environment file
+.env
+
+# Ignore directories that shouldn't be tracked
+bootstrap/
+database/
+public/
+storage/
+
+# Ignore IDE/editor-specific files
+.vscode/
+*.swp
