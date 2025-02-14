@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,9 +9,12 @@ class UniversityApiController extends Controller
 {
     public function fetchUniversities()
     {
-        $response = Http::get('http://universities.hipolabs.com/search?country=United+States');
-        $data = $response->json();
+        // Fetch data from API
+        $response = Http::get('https://datausa.io/api/data?drilldowns=Nation&measures=Population');
         
+        // Decode JSON response and extract 'data' array
+        $data = $response->json()['data'] ?? [];
+
         return view('api.index', compact('data'));
     }
 }

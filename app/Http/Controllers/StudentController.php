@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use App\Models\University; // Import the University model
+use App\Models\University; 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -43,7 +43,10 @@ class StudentController extends Controller
         // Handle image upload (if any)
         $imageName = null;
         if ($request->hasFile('image_upload')) {
-            $imageName = $request->image_upload->store('images', 'public');
+          
+
+            $imagePath = $request->file('image_upload')->store('images', 'public');
+            $imageName = $request->image_upload->hashName();
         }
 
         // Create the student and save the image path along with the university_id
